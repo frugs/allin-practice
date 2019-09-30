@@ -1,0 +1,15 @@
+.AppUtil-inline-icon {
+    object-fit: contain;
+}
+
+.AppUtil-invert-active-icon {
+    transition: all 0.15s;
+}
+
+.active .AppUtil-invert-active-icon {
+    filter: invert(100%);
+}
+
+label:hover .AppUtil-invert-active-icon {
+    filter: invert(100%);
+}

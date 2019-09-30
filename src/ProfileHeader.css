@@ -1,0 +1,24 @@
+.Profile-cover {
+    object-fit: cover;
+    object-position: 50% 75%;
+    width: 100%;
+    height: 300px;
+    vertical-align: top;
+}
+
+.Profile-avatar-username-summary-container {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: left;
+    position: relative;
+    top: -50px;
+}
+
+.Profile-avatar {
+    min-width: 200px;
+    min-height: 200px;
+    border-radius: 50%;
+    border: 5px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .25), -5px 5px 5px rgba(0, 0, 0, 0.25)
+}
