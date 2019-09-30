@@ -4,13 +4,13 @@ import ProfileHeader from "./ProfileHeader";
 import ProfileCardRace from "./ProfileCardRace";
 import ProfileCardTimezone from "./ProfileCardTimezone";
 
-function Profile() {
+function Profile(props) {
     return (
         <div>
-            <ProfileHeader/>
+            <ProfileHeader {...props}/>
             <div className="Profile-body">
-                <ProfileCardRace/>
-                <ProfileCardTimezone/>
+                <ProfileCardRace {...props}/>
+                <ProfileCardTimezone {...props}/>
             </div>
         </div>
     );

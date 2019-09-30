@@ -3,16 +3,31 @@ import './App.css';
 import AppHeader from "./AppHeader";
 import Profile from "./Profile";
 
-function App() {
-    return (
-        <div className="App">
-            <AppHeader/>
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            avatar: "https://cdn.discordapp.com/avatars/114041046828056579/a78d511a528f641e4a131b37d3dc33b2",
+            continent: "Europe",
+            race: "Zerg",
+            league: "Master",
+            updateAppState: (state) => {
+                this.setState(state)
+            }
+        }
+    }
 
-            <div className="App-content">
-                <Profile/>
+    render() {
+        return (
+            <div className="App">
+                <AppHeader {...this.state}/>
+
+                <div className="App-content">
+                    <Profile {...this.state}/>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default App;

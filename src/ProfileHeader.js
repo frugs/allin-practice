@@ -1,7 +1,10 @@
 import React from 'react';
 import './ProfileHeader.css';
 
-function ProfileHeader() {
+function ProfileHeader({avatar, continent, race, league}) {
+    let raceIcon = "/" + race + "Icon.png";
+    let leagueIcon = "/" + league.toLowerCase() + ".png";
+
     return (
         <div>
             <img
@@ -11,7 +14,7 @@ function ProfileHeader() {
             />
             <div align="left" className="d-flex align-items-center Profile-avatar-username-summary-container">
                 <img
-                    src="https://cdn.discordapp.com/avatars/114041046828056579/a78d511a528f641e4a131b37d3dc33b2"
+                    src={avatar}
                     width="200"
                     height="200"
                     className="Profile-avatar mx-2"
@@ -27,11 +30,11 @@ function ProfileHeader() {
                             height="20"
                             className="mx-2 AppUtil-inline-icon"
                         />
-                        <span className="h6 font-weight-normal text-muted my-0">London, UK</span>
+                        <span className="h6 font-weight-normal text-muted my-0">{continent}</span>
                     </div>
                     <div className="d-flex align-items-center my-1">
                         <img
-                            src="/ZergIcon.png"
+                            src={raceIcon}
                             alt=""
                             width="20"
                             height="20"
@@ -41,13 +44,13 @@ function ProfileHeader() {
                     </div>
                     <div className="d-flex align-items-center my-1">
                         <img
-                            src="/master.png"
+                            src={leagueIcon}
                             alt=""
                             width="20"
                             height="20"
                             className="mx-2 AppUtil-inline-icon"
                         />
-                        <span className="h6 font-weight-normal text-muted my-0">Master League</span>
+                        <span className="h6 font-weight-normal text-muted my-0">{league} League</span>
                     </div>
                 </span>
             </div>
