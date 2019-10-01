@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import AppHeader from "./AppHeader";
 import Profile from "./Profile";
 

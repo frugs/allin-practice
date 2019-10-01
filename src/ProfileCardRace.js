@@ -8,7 +8,7 @@ function ProfileCardRace() {
     return (
         <div className="card Profile-card">
             <div className="h4 font-weight-normal mb-4">
-                Your preferred race(s):
+                The race(s) you'd like to practice with:
             </div>
             <ToggleButtonGroup type="checkbox" size="sm">
                 <ToggleButton value="1" variant="outline-primary" className="d-flex align-items-center flex-column">

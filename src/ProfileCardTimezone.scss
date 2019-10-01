@@ -1,0 +1,43 @@
+@import "~bootswatch/dist/litera/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/litera/bootswatch";
+
+.ProfileCardTimezone-timezone-picker {
+    width: 450px;
+    max-width: 100%;
+    padding: 5px 10px;
+}
+
+.timezone-picker {
+}
+
+.timezone-picker-textfield input {
+    @extend .form-control;
+    font-size: 16pt;
+}
+
+.timezone-picker-list {
+    @extend .dropdown-menu;
+}
+
+.timezone-picker-list-rel {
+    position: relative;
+}
+
+.timezone-picker-list-abs {
+    position: absolute;
+}
+
+.timezone-picker-list-item {
+    @extend .dropdown-item;
+}
+
+.timezone-picker-list-item-active {
+}
+
+.timezone-picker-open .timezone-picker-list {
+    display: block
+}
+
+.timezone-picker-selected .timezone-picker-textfield input {
+}
