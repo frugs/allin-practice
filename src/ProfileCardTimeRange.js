@@ -1,51 +1,49 @@
 import React from 'react';
-import ProfileCardTimeRangeDateTimePicker from './ProfileCardTimeRangeDateTimePicker'
+import {Card, Classes} from '@blueprintjs/core';
+import {TimePicker} from "@blueprintjs/datetime";
 import './ProfileCard.css';
+import './ProfileCardTimeRange.scss';
+
+function DayTimeRange(props) {
+    return (
+        <div>
+            <div>
+                <h5 className={`${Classes.HEADING}`}>{props.day}</h5>
+            </div>
+            <div className="d-flex align-items-center">
+                <span className="mx-3">From:</span>
+                <TimePicker selectAllOnFocus showArrowButtons useAmPm placeholder="From time"/>
+                <span className="mx-3">To:</span>
+                <TimePicker selectAllOnFocus showArrowButtons useAmPm placeholder="To time"/>
+            </div>
+        </div>
+    );
+}
 
 function ProfileCardTimeRange() {
-    const daysOfTheWeek = [
+    const weekDayDays = [
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
+    ];
+    const weekEndDays = [
         "Saturday",
         "Sunday",
     ];
     return (
-        <div className="card Profile-card">
-            <div className="h4 font-weight-normal mb-4">
-                The times during the week you are available for practice:
+        <Card className="Profile-card">
+            <div className="mb-4">
+                <h4 className={Classes.HEADING}>The times during the week you are available for practice:</h4>
             </div>
-            <table>
-                <colgroup>
-                    <col style={{width: "10%"}}/>
-                </colgroup>
-                <tbody>
-                {daysOfTheWeek.map((value, index) => {
-                    return <tr key={index}>
-                        <td className="px-4 text-center">
-                            <h5 className="text-primary font-weight-normal">{value}</h5>
-                        </td>
-                        <td>
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td>From:</td>
-                                    <td><ProfileCardTimeRangeDateTimePicker placeholder="From time"/></td>
-                                </tr>
-                                <tr>
-                                    <td>To:</td>
-                                    <td><ProfileCardTimeRangeDateTimePicker placeholder="To time"/></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                })}
-                </tbody>
-            </table>
-        </div>
+            <Card className="ProfileCardTimeRange-weekday-card">
+                {weekDayDays.map((day) => <DayTimeRange day={day}/>)}
+            </Card>
+            <Card className="ProfileCardTimeRange-weekend-card">
+                {weekEndDays.map((day) => <DayTimeRange day={day}/>)}
+            </Card>
+        </Card>
     );
 }
 

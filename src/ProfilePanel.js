@@ -3,7 +3,7 @@ import './ProfilePanel.css';
 import ProfileHeader from "./ProfileHeader";
 import ProfileCardRace from "./ProfileCardRace";
 import ProfileCardTimezone from "./ProfileCardTimezone";
-// import ProfileCardTimeRange from "./ProfileCardTimeRange";
+import ProfileCardTimeRange from "./ProfileCardTimeRange";
 
 function ProfilePanel(props) {
     return (
@@ -12,7 +12,7 @@ function ProfilePanel(props) {
             <div className="Profile-body">
                 <ProfileCardRace {...props}/>
                 <ProfileCardTimezone {...props}/>
-                {/*<ProfileCardTimeRange/>*/}
+                <ProfileCardTimeRange/>
             </div>
         </div>
     );
