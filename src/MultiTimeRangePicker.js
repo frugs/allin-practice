@@ -49,7 +49,7 @@ class MultiTimeRangePicker extends React.Component {
                     {
                         timeRangePickerKeys.map((key) => {
                             return (
-                                <div className="d-flex">
+                                <div key={key} className="d-flex">
                                     <TimeRangePicker {...this.props}/>
                                     {(() => {
                                         if (key === timeRangePickerKeys.length - 1) {

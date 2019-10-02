@@ -19,25 +19,48 @@ function RaceButtonContent({race}) {
     );
 }
 
-function ProfileCardRace() {
+function RaceToggleButton(props) {
+    const {practiceRaces, race} = props;
+    return (
+        <ToggleButton buttonProps={{intent: Intent.PRIMARY}} pressed={practiceRaces.includes(race)}>
+            <RaceButtonContent race={race}/>
+        </ToggleButton>
+    );
+}
+
+function ProfileCardRace(props) {
+    const races = [
+        "Terran",
+        "Protoss",
+        "Zerg",
+        "Random",
+    ];
+    const {practiceRaces, updateAppState} = props;
+
     return (
         <Card className="Profile-card">
             <div className="mb-4">
                 <h4 className={Classes.HEADING}>The race(s) you'd like to practice with:</h4>
             </div>
             <ButtonGroup minimal fill>
-                <ToggleButton intent={Intent.PRIMARY}>
-                    <RaceButtonContent race="Terran"/>
-                </ToggleButton>
-                <ToggleButton intent={Intent.PRIMARY}>
-                    <RaceButtonContent race="Protoss"/>
-                </ToggleButton>
-                <ToggleButton intent={Intent.PRIMARY}>
-                    <RaceButtonContent race="Zerg"/>
-                </ToggleButton>
-                <ToggleButton intent={Intent.PRIMARY}>
-                    <RaceButtonContent race="Random"/>
-                </ToggleButton>
+                {
+                    races.map((race) => {
+                        return (
+                            <RaceToggleButton
+                                key={race}
+                                {...props}
+                                race={race}
+                                onClick={() => {
+                                    if (practiceRaces.includes(race)) {
+                                        updateAppState({practiceRaces: practiceRaces.filter((e) => e !== race)});
+                                    } else {
+                                        updateAppState({practiceRaces: [...practiceRaces, race]});
+                                    }
+                                }}
+                            />
+                        )
+                    })
+                }
             </ButtonGroup>
         </Card>
     );

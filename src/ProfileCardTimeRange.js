@@ -35,10 +35,10 @@ function ProfileCardTimeRange() {
                 <h4 className={Classes.HEADING}>The times during the week you are available for practice:</h4>
             </div>
             <Card className="ProfileCardTimeRange-weekday-card">
-                {weekDayDays.map((day) => <DayTimeRange day={day}/>)}
+                {weekDayDays.map((day) => <DayTimeRange key={day} day={day}/>)}
             </Card>
             <Card className="ProfileCardTimeRange-weekend-card">
-                {weekEndDays.map((day) => <DayTimeRange day={day}/>)}
+                {weekEndDays.map((day) => <DayTimeRange key={day} day={day}/>)}
             </Card>
         </Card>
     );

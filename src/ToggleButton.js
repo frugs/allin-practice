@@ -21,7 +21,7 @@ class ToggleButton extends React.Component {
 
     render() {
         return (
-            <Button active={this.state.pressed} {...this.props} onClick={(event) => {
+            <Button active={this.state.pressed} {...this.props.buttonProps} onClick={(event) => {
                 this.togglePressed();
                 this.forwardClick(event);
             }}>

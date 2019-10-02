@@ -14,6 +14,7 @@ class App extends React.Component {
             continent: "Europe",
             timezone: "Europe/London",
             race: "Zerg",
+            practiceRaces: ["Protoss", "Zerg"],
             league: "Master",
             updateAppState: (state) => {
                 this.setState(state)
