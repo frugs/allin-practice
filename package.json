@@ -3,17 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.18.1",
+    "@blueprintjs/datetime": "^3.13.0",
+    "@blueprintjs/icons": "^3.10.0",
+    "@blueprintjs/select": "^3.10.0",
+    "@blueprintjs/timezone": "^3.5.0",
     "bootstrap": "^4.3.1",
-    "bootswatch": "^4.3.1",
-    "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "react": "^16.10.1",
-    "react-bootstrap": "^1.0.0-beta.12",
-    "react-bootstrap-timezone-picker": "^2.0.0",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2",
-    "react-widgets": "^4.4.11",
-    "react-widgets-moment": "^4.0.27"
+    "react-scripts": "3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

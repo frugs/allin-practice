@@ -3,7 +3,7 @@
     src: url('/ethnocentric_rg.ttf') format('truetype');
 }
 
-.AppHeader-navbar-brand {
+.AppHeader-navbar-heading {
     font-family: ethnocentric, sans-serif;
 }
 
@@ -15,5 +15,4 @@
 .AppHeader-navbar-username {
     min-width: 150px;
     text-align: left;
-    font-size: large;
 }

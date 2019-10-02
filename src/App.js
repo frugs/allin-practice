@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.scss';
 import AppHeader from "./AppHeader";
-import Profile from "./Profile";
+import AppContent from "./AppContent";
+// import ProfilePanel from "./ProfilePanel";
 
 class App extends React.Component {
     constructor(props) {
@@ -19,12 +20,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
                 <AppHeader {...this.state}/>
-
-                <div className="App-content">
-                    <Profile {...this.state}/>
-                </div>
+                <AppContent {...this.state}/>
             </div>
         );
     }
