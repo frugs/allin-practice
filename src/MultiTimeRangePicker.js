@@ -1,7 +1,37 @@
 import React from 'react';
-import {Button, Classes, Intent} from '@blueprintjs/core'
+import {Button, Classes, Intent, Tooltip} from '@blueprintjs/core'
 import {IconNames} from "@blueprintjs/icons";
 import TimeRangePicker from "./TimeRangePicker";
+
+function AddButton(props) {
+    return (
+        <Tooltip content="Add a time range">
+            <Button
+                {...props}
+                small
+                intent={Intent.PRIMARY}
+                minimal
+                className="ml-1 mr-2"
+                icon={IconNames.SMALL_PLUS}
+            />
+        </Tooltip>
+    );
+}
+
+function RemoveButton(props) {
+    return (
+        <Tooltip content="Remove this time range">
+            <Button
+                {...props}
+                small
+                intent={Intent.DANGER}
+                minimal
+                className="ml-2 mr-1"
+                icon={IconNames.SMALL_MINUS}
+            />
+        </Tooltip>
+    );
+}
 
 class MultiTimeRangePicker extends React.Component {
     constructor(props) {
@@ -25,22 +55,14 @@ class MultiTimeRangePicker extends React.Component {
                                         if (key === timeRangePickerKeys.length - 1) {
                                             return (
                                                 <div className="d-flex align-items-center">
-                                                    <Button
-                                                        small
-                                                        intent={Intent.DANGER}
-                                                        minimal
-                                                        className="ml-2 mr-1"
-                                                        icon={IconNames.SMALL_MINUS}
-                                                        onClick={() => this.setState({numPickers: this.state.numPickers - 1})}
-                                                    />
-                                                    <Button
-                                                        small
-                                                        intent={Intent.PRIMARY}
-                                                        minimal
-                                                        className="ml-1 mr-2"
-                                                        icon={IconNames.SMALL_PLUS}
+                                                    <AddButton
                                                         onClick={
                                                             () => this.setState({numPickers: this.state.numPickers + 1})
+                                                        }
+                                                    />
+                                                    <RemoveButton
+                                                        onClick={
+                                                            () => this.setState({numPickers: this.state.numPickers - 1})
                                                         }
                                                     />
                                                 </div>
@@ -57,16 +79,7 @@ class MultiTimeRangePicker extends React.Component {
             return (
                 <div className={`${Classes.TEXT_MUTED} mb-3 mx-3`}>
                     No availability on this day.
-                    <Button
-                        small
-                        intent={Intent.PRIMARY}
-                        minimal
-                        className="mx-2"
-                        icon={IconNames.SMALL_PLUS}
-                        onClick={
-                            () => this.setState({numPickers: this.state.numPickers + 1})
-                        }
-                    />
+                    <AddButton onClick={() => this.setState({numPickers: this.state.numPickers + 1})}/>
                 </div>
             )
         }
