@@ -1,7 +1,7 @@
 import React from 'react';
+import {Card, Classes, PopoverPosition} from "@blueprintjs/core";
+import {TimezoneDisplayFormat, TimezonePicker} from "@blueprintjs/timezone";
 import './ProfileCard.css';
-import './ProfileCardTimezone.scss'
-import TimezonePicker from 'react-bootstrap-timezone-picker';
 
 function extractContinent(timezone) {
     if (!timezone) {
@@ -16,23 +16,36 @@ function extractContinent(timezone) {
     return split[0];
 }
 
-function ProfileCardTimezone({updateAppState}) {
-    return (
-        <div className="card Profile-card">
-            <div className="h4 font-weight-normal mb-4">
-                The time zone that you live in:
-            </div>
-            <TimezonePicker
-                absolute={false}
-                placeholder="Select time zone"
-                className="ProfileCardTimezone-timezone-picker"
-                onChange={(timezone) => {updateAppState({continent: extractContinent(timezone)})}}
-            />
-            <p className="p-2 h6 font-weight-light text-muted">
-                <small>Select your standard time zone, not your daylight savings time zone.</small>
-            </p>
-        </div>
-    );
+class ProfileCardTimezone extends React.Component {
+    constructor(props) {
+        super(props);
+        this.updateAppState = props.updateAppState
+    }
+
+    render() {
+        return (
+            <Card className="Profile-card">
+                <div className="mb-4">
+                    <h4 className={Classes.HEADING}>
+                        The time zone that you live in:
+                    </h4>
+                </div>
+                <TimezonePicker
+                    value={this.props.timezone}
+                    valueDisplayFormat={TimezoneDisplayFormat.COMPOSITE}
+                    buttonProps={{className: "px-5"}}
+                    popoverProps={{
+                        position: PopoverPosition.TOP,
+                        modifiers: {preventOverflow: true},
+                    }}
+                    placeholder="Select time zone"
+                    onChange={(timezone) => {
+                        this.updateAppState({timezone: timezone, continent: extractContinent(timezone)});
+                    }}
+                />
+            </Card>
+        );
+    }
 }
 
 export default ProfileCardTimezone;

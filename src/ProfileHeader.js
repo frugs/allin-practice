@@ -1,4 +1,6 @@
 import React from 'react';
+import { Classes, Icon } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
 import './ProfileHeader.css';
 
 function ProfileHeader({avatar, continent, race, league}) {
@@ -21,36 +23,32 @@ function ProfileHeader({avatar, continent, race, league}) {
                     alt="Avatar"
                 />
                 <span className="mx-3 py-5">
-                    <div className="h3 font-weight-normal my-3">Hugo "frugs" Wainwright</div>
-                    <div className="d-flex align-items-center my-1">
-                        <img
-                            src="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/png/map-marker-4x.png"
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon"
-                        />
-                        <span className="h6 font-weight-normal text-muted my-0">{continent}</span>
-                    </div>
-                    <div className="d-flex align-items-center my-1">
-                        <img
-                            src={raceIcon}
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon"
-                        />
-                        <span className="h6 font-weight-normal text-muted my-0">Zerg</span>
-                    </div>
-                    <div className="d-flex align-items-center my-1">
-                        <img
-                            src={leagueIcon}
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon"
-                        />
-                        <span className="h6 font-weight-normal text-muted my-0">{league} League</span>
+                    <div className="d-flex flex-column align-items-start">
+                        <h2 className={`${Classes.HEADING} my-3`}>Hugo "frugs" Wainwright</h2>
+                        <div className="d-flex align-items-center my-1">
+                            <Icon icon={IconNames.MAP_MARKER} className="mx-2" iconSize={20}/>
+                            <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{continent}</span>
+                        </div>
+                        <div className="d-flex align-items-center my-1">
+                            <img
+                                src={raceIcon}
+                                alt=""
+                                width="20"
+                                height="20"
+                                className="mx-2 AppUtil-inline-icon"
+                            />
+                            <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>Zerg</span>
+                        </div>
+                        <div className="d-flex align-items-center my-1">
+                            <img
+                                src={leagueIcon}
+                                alt=""
+                                width="20"
+                                height="20"
+                                className="mx-2 AppUtil-inline-icon"
+                            />
+                            <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{league} League</span>
+                        </div>
                     </div>
                 </span>
             </div>

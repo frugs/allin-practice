@@ -30,7 +30,7 @@ function AppHeader() {
                             alt="Avatar"
                         />
                         <span
-                            className={[Classes.TEXT_LARGE, "AppHeader-navbar-username"]}>Hugo "frugs" Wanwright</span>
+                            className={`${Classes.TEXT_LARGE} AppHeader-navbar-username`}>Hugo "frugs" Wanwright</span>
                     </Button>
                 </Navbar.Group>
             </Navbar>

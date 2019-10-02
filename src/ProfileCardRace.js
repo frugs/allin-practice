@@ -1,66 +1,45 @@
 import React from 'react';
+import {ButtonGroup, Card, Classes, Intent} from '@blueprintjs/core';
+import ToggleButton from "./ToggleButton";
 import './ProfileCard.css';
 import './AppUtil.css'
-import ToggleButton from 'react-bootstrap/ToggleButton'
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+
+function RaceButtonContent({race}) {
+    return (
+        <div className="d-flex align-items-center">
+            <img
+                src={`/${race}Icon.png`}
+                alt=""
+                width="20"
+                height="20"
+                className="mx-2 AppUtil-inline-icon AppUtil-invert-active-icon"
+            />
+            {race}
+        </div>
+    );
+}
 
 function ProfileCardRace() {
     return (
-        <div className="card Profile-card">
-            <div className="h4 font-weight-normal mb-4">
-                The race(s) you'd like to practice with:
+        <Card className="Profile-card">
+            <div className="mb-4">
+                <h4 className={Classes.HEADING}>The race(s) you'd like to practice with:</h4>
             </div>
-            <ToggleButtonGroup type="checkbox" size="sm">
-                <ToggleButton value="1" variant="outline-primary" className="d-flex align-items-center flex-column">
-                    <div className="d-flex align-items-center">
-                        <img
-                            src="/TerranIcon.png"
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon AppUtil-invert-active-icon"
-                        />
-                        Terran
-                    </div>
+            <ButtonGroup minimal fill>
+                <ToggleButton intent={Intent.PRIMARY}>
+                    <RaceButtonContent race="Terran"/>
                 </ToggleButton>
-                <ToggleButton value="2" variant="outline-primary" className="d-flex align-items-center flex-column">
-                    <div className="d-flex align-items-center">
-                        <img
-                            src="/ProtossIcon.png"
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon AppUtil-invert-active-icon"
-                        />
-                        Protoss
-                    </div>
+                <ToggleButton intent={Intent.PRIMARY}>
+                    <RaceButtonContent race="Protoss"/>
                 </ToggleButton>
-                <ToggleButton value="3" variant="outline-primary" className="d-flex align-items-center flex-column">
-                    <div className="d-flex align-items-center">
-                        <img
-                            src="/ZergIcon.png"
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon AppUtil-invert-active-icon"
-                        />
-                        Zerg
-                    </div>
+                <ToggleButton intent={Intent.PRIMARY}>
+                    <RaceButtonContent race="Zerg"/>
                 </ToggleButton>
-                <ToggleButton value="4" variant="outline-primary" className="d-flex align-items-center flex-column">
-                    <div className="d-flex align-items-center">
-                        <img
-                            src="/RandomIcon.png"
-                            alt=""
-                            width="20"
-                            height="20"
-                            className="mx-2 AppUtil-inline-icon AppUtil-invert-active-icon"
-                        />
-                        Random
-                    </div>
+                <ToggleButton intent={Intent.PRIMARY}>
+                    <RaceButtonContent race="Random"/>
                 </ToggleButton>
-            </ToggleButtonGroup>
-        </div>
+            </ButtonGroup>
+        </Card>
     );
 }
 

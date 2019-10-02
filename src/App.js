@@ -1,8 +1,10 @@
 import React from 'react';
+import { FocusStyleManager } from "@blueprintjs/core";
 import './App.scss';
 import AppHeader from "./AppHeader";
 import AppContent from "./AppContent";
-// import ProfilePanel from "./ProfilePanel";
+
+FocusStyleManager.onlyShowFocusOnTabs();
 
 class App extends React.Component {
     constructor(props) {
