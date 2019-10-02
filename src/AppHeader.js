@@ -1,6 +1,7 @@
 import React from 'react';
 import './AppHeader.css';
 import {Alignment, Button, Classes, Navbar} from '@blueprintjs/core';
+import {IconNames} from '@blueprintjs/icons';
 
 function AppHeader() {
     let allinRedStyle = {color: "#EC222E"};
@@ -21,6 +22,7 @@ function AppHeader() {
                     </Navbar.Heading>
                 </Navbar.Group>
                 <Navbar.Group align={Alignment.RIGHT}>
+                    <Button minimal icon={IconNames.NOTIFICATIONS} className="mx-2 px-3 py-2"/>
                     <Button className={Classes.MINIMAL}>
                         <img
                             src="https://cdn.discordapp.com/avatars/114041046828056579/a78d511a528f641e4a131b37d3dc33b2"

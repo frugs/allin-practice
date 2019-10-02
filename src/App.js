@@ -12,6 +12,7 @@ class App extends React.Component {
         this.state = {
             avatar: "https://cdn.discordapp.com/avatars/114041046828056579/a78d511a528f641e4a131b37d3dc33b2",
             continent: "Europe",
+            timezone: "Europe/London",
             race: "Zerg",
             league: "Master",
             updateAppState: (state) => {
