@@ -1,9 +1,10 @@
 import React from 'react';
-import './ProfilePanel.css';
 import ProfileHeader from "./ProfileHeader";
 import ProfileCardRace from "./ProfileCardRace";
 import ProfileCardTimezone from "./ProfileCardTimezone";
 import ProfileCardTimeRange from "./ProfileCardTimeRange";
+import ProfileCardUpdateOrDiscard from "./ProfileCardUpdateOrDiscard";
+import './ProfilePanel.css';
 
 function ProfilePanel(props) {
     return (
@@ -13,6 +14,7 @@ function ProfilePanel(props) {
                 <ProfileCardRace {...props}/>
                 <ProfileCardTimezone {...props}/>
                 <ProfileCardTimeRange/>
+                <ProfileCardUpdateOrDiscard/>
             </div>
         </div>
     );

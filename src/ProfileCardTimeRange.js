@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, Classes} from '@blueprintjs/core';
-import {TimePicker} from "@blueprintjs/datetime";
+import MultiTimeRangePicker from "./MultiTimeRangePicker";
 import './ProfileCard.css';
 import './ProfileCardTimeRange.scss';
 
@@ -11,10 +11,7 @@ function DayTimeRange(props) {
                 <h5 className={`${Classes.HEADING}`}>{props.day}</h5>
             </div>
             <div className="d-flex align-items-center">
-                <span className="mx-3">From:</span>
-                <TimePicker selectAllOnFocus showArrowButtons useAmPm placeholder="From time"/>
-                <span className="mx-3">To:</span>
-                <TimePicker selectAllOnFocus showArrowButtons useAmPm placeholder="To time"/>
+                <MultiTimeRangePicker selectAllOnFocus showArrowButtons useAmPm/>
             </div>
         </div>
     );
