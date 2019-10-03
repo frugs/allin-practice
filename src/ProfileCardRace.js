@@ -1,14 +1,15 @@
 import React from 'react';
 import {ButtonGroup, Card, Classes, Intent} from '@blueprintjs/core';
 import ToggleButton from "./ToggleButton";
+import RaceIcon from "./RaceIcon";
 import './ProfileCard.css';
 import './AppUtil.css'
 
 function RaceButtonContent({race}) {
     return (
         <div className="d-flex align-items-center">
-            <img
-                src={`/${race}Icon.png`}
+            <RaceIcon
+                race={race}
                 alt=""
                 width="20"
                 height="20"

@@ -1,12 +1,9 @@
 import React from 'react';
 import { Classes, Icon } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
+import RaceIcon from "./RaceIcon";
 import './ProfileHeader.css';
 import AllinCover from './allin_cover.png';
-import TerranIcon from './terran_icon.png';
-import ProtossIcon from './protoss_icon.png';
-import ZergIcon from './zerg_icon.png';
-import RandomIcon from './random_icon.png';
 import BronzeIcon from './bronze_icon.png';
 import SilverIcon from './silver_icon.png';
 import GoldIcon from './gold_icon.png';
@@ -14,13 +11,6 @@ import PlatinumIcon from './platinum_icon.png';
 import DiamondIcon from './diamond_icon.png';
 import MasterIcon from './master_icon.png';
 import GrandmasterIcon from './grandmaster_icon.png';
-
-const raceIcons = {
-    "Terran": TerranIcon,
-    "Protoss": ProtossIcon,
-    "Zerg": ZergIcon,
-    "Random": RandomIcon,
-};
 
 const leagueIcons = {
     "Bronze": BronzeIcon,
@@ -33,7 +23,6 @@ const leagueIcons = {
 };
 
 function ProfileHeader({avatar, player, continent, race, league}) {
-    let raceIcon = raceIcons[race];
     let leagueIcon = leagueIcons[league];
 
     return (
@@ -59,8 +48,8 @@ function ProfileHeader({avatar, player, continent, race, league}) {
                             <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{continent}</span>
                         </div>
                         <div className="d-flex align-items-center my-1">
-                            <img
-                                src={raceIcon}
+                            <RaceIcon
+                                race={race}
                                 alt=""
                                 width="20"
                                 height="20"
