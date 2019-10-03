@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'ethnocentric';
-    src: url('/ethnocentric_rg.ttf') format('truetype');
+    src: url(./ethnocentric_rg.ttf) format('truetype');
 }
 
 .AppHeader-navbar-heading {

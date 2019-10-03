@@ -1,7 +1,8 @@
 import React from 'react';
-import './AppHeader.css';
 import {Alignment, Button, Classes, Navbar} from '@blueprintjs/core';
 import {IconNames} from '@blueprintjs/icons';
+import './AppHeader.css';
+import AllinLogo from './allin_logo.png';
 
 function AppHeader({avatar, player}) {
     const allinRedStyle = {color: "#EC222E"};
@@ -12,7 +13,7 @@ function AppHeader({avatar, player}) {
                 <Navbar.Group align={Alignment.LEFT} className="AppHeader-navbar-heading">
                     <Navbar.Heading>
                         <img
-                            src="/AllinStandardTextless.png"
+                            src={AllinLogo}
                             width="35"
                             height="30"
                             className="mx-2"

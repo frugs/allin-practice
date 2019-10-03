@@ -2,15 +2,44 @@ import React from 'react';
 import { Classes, Icon } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import './ProfileHeader.css';
+import AllinCover from './allin_cover.png';
+import TerranIcon from './terran_icon.png';
+import ProtossIcon from './protoss_icon.png';
+import ZergIcon from './zerg_icon.png';
+import RandomIcon from './random_icon.png';
+import BronzeIcon from './bronze_icon.png';
+import SilverIcon from './silver_icon.png';
+import GoldIcon from './gold_icon.png';
+import PlatinumIcon from './platinum_icon.png';
+import DiamondIcon from './diamond_icon.png';
+import MasterIcon from './master_icon.png';
+import GrandmasterIcon from './grandmaster_icon.png';
+
+const raceIcons = {
+    "Terran": TerranIcon,
+    "Protoss": ProtossIcon,
+    "Zerg": ZergIcon,
+    "Random": RandomIcon,
+};
+
+const leagueIcons = {
+    "Bronze": BronzeIcon,
+    "Silver": SilverIcon,
+    "Gold": GoldIcon,
+    "Platinum": PlatinumIcon,
+    "Diamond": DiamondIcon,
+    "Master": MasterIcon,
+    "Grandmaster": GrandmasterIcon,
+};
 
 function ProfileHeader({avatar, player, continent, race, league}) {
-    let raceIcon = "/" + race + "Icon.png";
-    let leagueIcon = "/" + league.toLowerCase() + ".png";
+    let raceIcon = raceIcons[race];
+    let leagueIcon = leagueIcons[league];
 
     return (
         <div>
             <img
-                src="/allin_cover.png"
+                src={AllinCover}
                 alt="Cover"
                 className="Profile-cover"
             />
