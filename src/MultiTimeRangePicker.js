@@ -33,65 +33,78 @@ function RemoveButton(props) {
     );
 }
 
-class MultiTimeRangePicker extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            numPickers: 1
-        }
-    }
-
-    renderTimeRangePickers() {
-        if (this.state.numPickers) {
-            const timeRangePickerKeys = [...Array(this.state.numPickers).keys()];
-            return (
-                <div className="mb-3">
-                    {
-                        timeRangePickerKeys.map((key) => {
-                            return (
-                                <div key={key} className="d-flex">
-                                    <TimeRangePicker {...this.props}/>
-                                    {(() => {
-                                        if (key === timeRangePickerKeys.length - 1) {
-                                            return (
-                                                <div className="d-flex align-items-center">
-                                                    <AddButton
-                                                        onClick={
-                                                            () => this.setState({numPickers: this.state.numPickers + 1})
-                                                        }
-                                                    />
-                                                    <RemoveButton
-                                                        onClick={
-                                                            () => this.setState({numPickers: this.state.numPickers - 1})
-                                                        }
-                                                    />
-                                                </div>
-                                            );
-                                        }
-                                    })()}
-                                </div>
-                            );
-                        })
-                    }
-                </div>
-            );
-        } else {
-            return (
-                <div className={`${Classes.TEXT_MUTED} mb-3 mx-3`}>
-                    No availability on this day.
-                    <AddButton onClick={() => this.setState({numPickers: this.state.numPickers + 1})}/>
-                </div>
-            )
-        }
-    }
-
-    render() {
+function TimeRangePickers(props) {
+    let {timeRanges, day, updateAppState} = props;
+    const stateKey = `timeRanges${day}`;
+    if (timeRanges.length > 0) {
         return (
-            <div>
-                {this.renderTimeRangePickers()}
+            <div className="mb-3">
+                {
+                    timeRanges.map(({from, to}, key) => {
+                        return (
+                            <div key={key} className="d-flex">
+                                <TimeRangePicker
+                                    {...props}
+                                    from={timeRanges[key].from}
+                                    to={timeRanges[key].to}
+                                    onFromChange={(time) => {
+                                        let newTimeRanges = [...timeRanges];
+                                        newTimeRanges[key].from = time;
+                                        updateAppState({[stateKey]: newTimeRanges});
+                                    }}
+                                    onToChange={(time) => {
+                                        let newTimeRanges = [...timeRanges];
+                                        newTimeRanges[key].to = time;
+                                        updateAppState({[stateKey]: newTimeRanges});
+                                    }}
+                                />
+                                {(() => {
+                                    if (key === timeRanges.length - 1) {
+                                        return (
+                                            <div className="d-flex align-items-center">
+                                                <AddButton
+                                                    onClick={
+                                                        () => {
+                                                            let newTimeRanges = [...timeRanges, {}];
+                                                            updateAppState({[stateKey]: newTimeRanges})
+                                                        }
+                                                    }
+                                                />
+                                                <RemoveButton
+                                                    onClick={
+                                                        () => {
+                                                            let newTimeRanges = timeRanges.slice(0, timeRanges.length - 1);
+                                                            updateAppState({[stateKey]: newTimeRanges})
+                                                        }
+                                                    }
+                                                />
+                                            </div>
+                                        );
+                                    }
+                                })()}
+                            </div>
+                        );
+                    })
+                }
             </div>
         );
+    } else {
+        return (
+            <div className={`${Classes.TEXT_MUTED} mb-3 mx-3`}>
+                No availability on this day.
+                <AddButton onClick={() => {
+                    let newTimeRanges = [...timeRanges, {}];
+                    updateAppState({[stateKey]: newTimeRanges})
+                }}/>
+            </div>
+        )
     }
+}
+
+function MultiTimeRangePicker(props) {
+    return (
+        <TimeRangePickers {...props}/>
+    );
 }
 
 export default MultiTimeRangePicker;

@@ -15,6 +15,13 @@ class App extends React.Component {
             timezone: "Europe/London",
             race: "Zerg",
             practiceRaces: ["Protoss", "Zerg"],
+            timeRangesMonday: [{}],
+            timeRangesTuesday: [{}],
+            timeRangesWednesday: [{}],
+            timeRangesThursday: [{}],
+            timeRangesFriday: [{}],
+            timeRangesSaturday: [{}],
+            timeRangesSunday: [{}],
             league: "Master",
             updateAppState: (state) => {
                 this.setState(state)
