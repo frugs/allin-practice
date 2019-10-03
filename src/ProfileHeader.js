@@ -3,7 +3,7 @@ import { Classes, Icon } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import './ProfileHeader.css';
 
-function ProfileHeader({avatar, continent, race, league}) {
+function ProfileHeader({avatar, player, continent, race, league}) {
     let raceIcon = "/" + race + "Icon.png";
     let leagueIcon = "/" + league.toLowerCase() + ".png";
 
@@ -24,7 +24,7 @@ function ProfileHeader({avatar, continent, race, league}) {
                 />
                 <span className="mx-3 py-5">
                     <div className="d-flex flex-column align-items-start">
-                        <h2 className={`${Classes.HEADING} my-3`}>Hugo "frugs" Wainwright</h2>
+                        <h2 className={`${Classes.HEADING} my-3`}>{player}</h2>
                         <div className="d-flex align-items-center my-1">
                             <Icon icon={IconNames.MAP_MARKER} className="mx-2" iconSize={20}/>
                             <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{continent}</span>

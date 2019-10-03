@@ -11,10 +11,12 @@ class App extends React.Component {
         super(props);
         this.state = {
             avatar: "https://cdn.discordapp.com/avatars/114041046828056579/a78d511a528f641e4a131b37d3dc33b2",
+            player: "Hugo \"frugs\" Wainwright",
             continent: "Europe",
-            timezone: "Europe/London",
             race: "Zerg",
+            league: "Master",
             practiceRaces: ["Protoss", "Zerg"],
+            timezone: "Europe/London",
             timeRangesMonday: [{}],
             timeRangesTuesday: [{}],
             timeRangesWednesday: [{}],
@@ -22,7 +24,6 @@ class App extends React.Component {
             timeRangesFriday: [{}],
             timeRangesSaturday: [{}],
             timeRangesSunday: [{}],
-            league: "Master",
             updateAppState: (state) => {
                 this.setState(state)
             }
