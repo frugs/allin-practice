@@ -1,6 +1,6 @@
 import React from 'react';
-import { Classes, Icon } from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
+import {Classes, Icon} from "@blueprintjs/core";
+import {IconNames} from "@blueprintjs/icons";
 import RaceIcon from "./RaceIcon";
 import './ProfileHeader.css';
 import AllinCover from './allin_cover.png';
@@ -22,9 +22,54 @@ const leagueIcons = {
     "Grandmaster": GrandmasterIcon,
 };
 
-function ProfileHeader({avatar, player, continent, race, league}) {
-    let leagueIcon = leagueIcons[league];
+const Continent = ({continent}) => {
+    if (continent) {
+        return (
+            <div className="d-flex align-items-center my-1">
+                <Icon icon={IconNames.MAP_MARKER} className="mx-2" iconSize={20}/>
+                <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{continent}</span>
+            </div>
+        );
+    }
 
+    return null;
+};
+
+const Race = ({race}) => (
+    <div className="d-flex align-items-center my-1">
+        <RaceIcon
+            race={race}
+            alt=""
+            width="20"
+            height="20"
+            className="mx-2 AppUtil-inline-icon"
+        />
+        <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>Zerg</span>
+    </div>
+);
+
+const League = ({league}) => {
+    if (league) {
+        let leagueIcon = leagueIcons[league];
+
+        return (
+            <div className="d-flex align-items-center my-1">
+                <img
+                    src={leagueIcon}
+                    alt=""
+                    width="20"
+                    height="20"
+                    className="mx-2 AppUtil-inline-icon"
+                />
+                <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{league} League</span>
+            </div>
+        );
+    }
+
+    return null;
+};
+
+function ProfileHeader({avatar, player, continent, race, league}) {
     return (
         <div>
             <img
@@ -43,30 +88,9 @@ function ProfileHeader({avatar, player, continent, race, league}) {
                 <span className="mx-3 py-5">
                     <div className="d-flex flex-column align-items-start">
                         <h2 className={`${Classes.HEADING} my-3`}>{player}</h2>
-                        <div className="d-flex align-items-center my-1">
-                            <Icon icon={IconNames.MAP_MARKER} className="mx-2" iconSize={20}/>
-                            <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{continent}</span>
-                        </div>
-                        <div className="d-flex align-items-center my-1">
-                            <RaceIcon
-                                race={race}
-                                alt=""
-                                width="20"
-                                height="20"
-                                className="mx-2 AppUtil-inline-icon"
-                            />
-                            <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>Zerg</span>
-                        </div>
-                        <div className="d-flex align-items-center my-1">
-                            <img
-                                src={leagueIcon}
-                                alt=""
-                                width="20"
-                                height="20"
-                                className="mx-2 AppUtil-inline-icon"
-                            />
-                            <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{league} League</span>
-                        </div>
+                        <Continent continent={continent}/>
+                        <Race race={race}/>
+                        <League league={league}/>
                     </div>
                 </span>
             </div>

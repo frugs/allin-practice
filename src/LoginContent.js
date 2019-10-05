@@ -14,7 +14,7 @@ function LoginContent({signIn}) {
                         alt="All-Inspiration"
                         width="300"
                         className="mb-5"
-                        style={{"object-fit": "contain"}}
+                        style={{"objectFit": "contain"}}
                     />
                     <div><h2 className={Classes.HEADING}>Welcome to All-Inspiraction Practice!</h2></div>
                     <Button
