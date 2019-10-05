@@ -10,6 +10,7 @@
     "@blueprintjs/timezone": "^3.5.0",
     "bootstrap": "^4.3.1",
     "http-proxy-middleware": "^0.20.0",
+    "moment-timezone": "^0.5.26",
     "node-sass": "^4.12.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",

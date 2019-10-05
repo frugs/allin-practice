@@ -22,8 +22,29 @@ const leagueIcons = {
     "Grandmaster": GrandmasterIcon,
 };
 
-const Continent = ({continent}) => {
-    if (continent) {
+const races = [
+    "Terran",
+    "Protoss",
+    "Zerg",
+    "Random",
+];
+
+function extractContinent(timezone) {
+    if (!timezone) {
+        return "";
+    }
+
+    let split = timezone.split("/");
+    if (!split) {
+        return "";
+    }
+
+    return split[0];
+}
+
+const Continent = ({timezone}) => {
+    if (timezone) {
+        const continent = extractContinent(timezone);
         return (
             <div className="d-flex align-items-center my-1">
                 <Icon icon={IconNames.MAP_MARKER} className="mx-2" iconSize={20}/>
@@ -44,8 +65,14 @@ const Race = ({race}) => (
             height="20"
             className="mx-2 AppUtil-inline-icon"
         />
-        <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>Zerg</span>
+        <span className={`${Classes.TEXT_MUTED} ${Classes.TEXT_LARGE} my-0`}>{race}</span>
     </div>
+);
+
+const Races = ({practiceRaces}) => (
+  <div className="d-flex">
+      {races.map((race) => practiceRaces.includes(race) ? <Race race={race} key={race}/> : null)}
+  </div>
 );
 
 const League = ({league}) => {
@@ -69,7 +96,7 @@ const League = ({league}) => {
     return null;
 };
 
-function ProfileHeader({avatar, player, continent, race, league}) {
+function ProfileHeader({avatar, player, timezone, practiceRaces, league}) {
     return (
         <div>
             <img
@@ -88,9 +115,9 @@ function ProfileHeader({avatar, player, continent, race, league}) {
                 <span className="mx-3 py-5">
                     <div className="d-flex flex-column align-items-start">
                         <h2 className={`${Classes.HEADING} my-3`}>{player}</h2>
-                        <Continent continent={continent}/>
-                        <Race race={race}/>
                         <League league={league}/>
+                        <Races practiceRaces={practiceRaces}/>
+                        <Continent timezone={timezone}/>
                     </div>
                 </span>
             </div>

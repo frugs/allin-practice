@@ -1,6 +1,7 @@
 import React from 'react';
 import MainContent from "./MainContent";
 import LoginContent from "./LoginContent";
+import moment from "moment-timezone";
 
 class PlaceHolderContent extends React.Component {
     componentDidMount() {
@@ -13,17 +14,17 @@ class PlaceHolderContent extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                updateAppState({
+                const databaseState = {
                     isSignedIn: true,
                     isAppReady: true,
                     avatar: data.avatar,
                     player: data.player,
-                    race: data.practice.practiceRaces[0], // TODO
                     league: data.league,
                     continent: data.practice.continent,
-                    timezone: data.practice.timezone,
+                    timezone: data.practice.timezone || moment.tz.guess(),
                     practiceRaces: data.practice.practiceRaces,
-                })
+                };
+                updateAppState({...databaseState, databaseState: databaseState});
             }, (err) => {
                 updateAppState({isAppReady: true});
                 console.log(err.message);

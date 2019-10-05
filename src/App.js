@@ -24,6 +24,7 @@ function makeInitialState() {
         timeRangesFriday: [{}],
         timeRangesSaturday: [{}],
         timeRangesSunday: [{}],
+        databaseState: {},
     };
 }
 
@@ -33,7 +34,7 @@ class App extends React.Component {
         this.state = {
             ...makeInitialState(),
             updateAppState: (state) => {
-                this.setState(state)
+                this.setState(state);
             },
 
             signIn: () => {
@@ -46,7 +47,16 @@ class App extends React.Component {
                 }, () => {
                     window.location.reload();
                 });
-            }
+            },
+
+            resetState: () => {
+                const {databaseState} = this.state;
+                if (databaseState) {
+                    this.setState(databaseState);
+                } else {
+                    this.setState(makeInitialState());
+                }
+            },
         }
     }
 

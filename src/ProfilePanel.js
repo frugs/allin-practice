@@ -14,7 +14,7 @@ function ProfilePanel(props) {
                 <ProfileCardRace {...props}/>
                 <ProfileCardTimezone {...props}/>
                 <ProfileCardTimeRange {...props}/>
-                <ProfileCardUpdateOrDiscard/>
+                <ProfileCardUpdateOrDiscard {...props}/>
             </div>
         </div>
     );

@@ -3,19 +3,6 @@ import {Card, Classes, PopoverPosition} from "@blueprintjs/core";
 import {TimezoneDisplayFormat, TimezonePicker} from "@blueprintjs/timezone";
 import './ProfileCard.css';
 
-function extractContinent(timezone) {
-    if (!timezone) {
-        return "";
-    }
-
-    let split = timezone.split("/");
-    if (!split) {
-        return "";
-    }
-
-    return split[0];
-}
-
 class ProfileCardTimezone extends React.Component {
     constructor(props) {
         super(props);
@@ -40,7 +27,7 @@ class ProfileCardTimezone extends React.Component {
                     }}
                     placeholder="Select time zone"
                     onChange={(timezone) => {
-                        this.updateAppState({timezone: timezone, continent: extractContinent(timezone)});
+                        this.updateAppState({timezone: timezone});
                     }}
                 />
             </Card>

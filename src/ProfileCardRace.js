@@ -1,6 +1,5 @@
 import React from 'react';
-import {ButtonGroup, Card, Classes, Intent} from '@blueprintjs/core';
-import ToggleButton from "./ToggleButton";
+import {Button, ButtonGroup, Card, Classes, Intent} from '@blueprintjs/core';
 import RaceIcon from "./RaceIcon";
 import './ProfileCard.css';
 import './AppUtil.css'
@@ -20,12 +19,11 @@ function RaceButtonContent({race}) {
     );
 }
 
-function RaceToggleButton(props) {
-    const {practiceRaces, race} = props;
+function RaceToggleButton({practiceRaces, race, onClick}) {
     return (
-        <ToggleButton buttonProps={{intent: Intent.PRIMARY}} pressed={practiceRaces.includes(race)}>
+        <Button intent={Intent.PRIMARY} active={practiceRaces.includes(race)} onClick={onClick}>
             <RaceButtonContent race={race}/>
-        </ToggleButton>
+        </Button>
     );
 }
 
@@ -49,7 +47,7 @@ function ProfileCardRace(props) {
                         return (
                             <RaceToggleButton
                                 key={race}
-                                {...props}
+                                practiceRaces={practiceRaces}
                                 race={race}
                                 onClick={() => {
                                     if (practiceRaces.includes(race)) {
