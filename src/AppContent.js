@@ -20,9 +20,15 @@ class PlaceHolderContent extends React.Component {
                     avatar: data.avatar,
                     player: data.player,
                     league: data.league,
-                    continent: data.practice.continent,
                     timezone: data.practice.timezone || moment.tz.guess(),
                     practiceRaces: data.practice.practiceRaces,
+                    timeRangesMonday: data.practice.timeRangesMonday || [],
+                    timeRangesTuesday: data.practice.timeRangesTuesday || [],
+                    timeRangesWednesday: data.practice.timeRangesWednesday || [],
+                    timeRangesThursday: data.practice.timeRangesThursday || [],
+                    timeRangesFriday: data.practice.timeRangesFriday || [],
+                    timeRangesSaturday: data.practice.timeRangesSaturday || [],
+                    timeRangesSunday: data.practice.timeRangesSunday || [],
                 };
                 updateAppState({...databaseState, databaseState: databaseState});
             }, (err) => {

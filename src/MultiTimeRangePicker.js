@@ -3,31 +3,45 @@ import {Button, Classes, Intent, Tooltip} from '@blueprintjs/core'
 import {IconNames} from "@blueprintjs/icons";
 import TimeRangePicker from "./TimeRangePicker";
 
-function AddButton(props) {
+const defaultTime = "1899-12-31T00:00:00.000Z";
+
+function AddButton({day, timeRanges, updateAppState}) {
+    const stateKey = `timeRanges${day}`;
     return (
         <Tooltip content="Add a time range">
             <Button
-                {...props}
                 small
                 intent={Intent.PRIMARY}
                 minimal
                 className="ml-1 mr-2"
                 icon={IconNames.SMALL_PLUS}
+                onClick={
+                    () => {
+                        let newTimeRanges = [...timeRanges, {from: defaultTime, to: defaultTime}];
+                        updateAppState({[stateKey]: newTimeRanges})
+                    }
+                }
             />
         </Tooltip>
     );
 }
 
-function RemoveButton(props) {
+function RemoveButton({day, timeRanges, updateAppState}) {
+    const stateKey = `timeRanges${day}`;
     return (
         <Tooltip content="Remove this time range">
             <Button
-                {...props}
                 small
                 intent={Intent.DANGER}
                 minimal
                 className="ml-2 mr-1"
                 icon={IconNames.SMALL_MINUS}
+                onClick={
+                    () => {
+                        let newTimeRanges = timeRanges.slice(0, timeRanges.length - 1);
+                        updateAppState({[stateKey]: newTimeRanges})
+                    }
+                }
             />
         </Tooltip>
     );
@@ -45,8 +59,8 @@ function TimeRangePickers(props) {
                             <div key={key} className="d-flex">
                                 <TimeRangePicker
                                     {...props}
-                                    from={timeRanges[key].from}
-                                    to={timeRanges[key].to}
+                                    from={new Date(timeRanges[key].from)}
+                                    to={new Date(timeRanges[key].to)}
                                     onFromChange={(time) => {
                                         let newTimeRanges = [...timeRanges];
                                         newTimeRanges[key].from = time;
@@ -63,20 +77,14 @@ function TimeRangePickers(props) {
                                         return (
                                             <div className="d-flex align-items-center">
                                                 <AddButton
-                                                    onClick={
-                                                        () => {
-                                                            let newTimeRanges = [...timeRanges, {}];
-                                                            updateAppState({[stateKey]: newTimeRanges})
-                                                        }
-                                                    }
+                                                    day={day}
+                                                    timeRanges={timeRanges}
+                                                    updateAppState={updateAppState}
                                                 />
                                                 <RemoveButton
-                                                    onClick={
-                                                        () => {
-                                                            let newTimeRanges = timeRanges.slice(0, timeRanges.length - 1);
-                                                            updateAppState({[stateKey]: newTimeRanges})
-                                                        }
-                                                    }
+                                                    day={day}
+                                                    timeRanges={timeRanges}
+                                                    updateAppState={updateAppState}
                                                 />
                                             </div>
                                         );
@@ -92,10 +100,11 @@ function TimeRangePickers(props) {
         return (
             <div className={`${Classes.TEXT_MUTED} mb-3 mx-3`}>
                 No availability on this day.
-                <AddButton onClick={() => {
-                    let newTimeRanges = [...timeRanges, {}];
-                    updateAppState({[stateKey]: newTimeRanges})
-                }}/>
+                <AddButton
+                    day={day}
+                    timeRanges={timeRanges}
+                    updateAppState={updateAppState}
+                />
             </div>
         )
     }

@@ -17,13 +17,13 @@ function makeInitialState() {
         league: "",
         practiceRaces: [],
         timezone: "",
-        timeRangesMonday: [{}],
-        timeRangesTuesday: [{}],
-        timeRangesWednesday: [{}],
-        timeRangesThursday: [{}],
-        timeRangesFriday: [{}],
-        timeRangesSaturday: [{}],
-        timeRangesSunday: [{}],
+        timeRangesMonday: [],
+        timeRangesTuesday: [],
+        timeRangesWednesday: [],
+        timeRangesThursday: [],
+        timeRangesFriday: [],
+        timeRangesSaturday: [],
+        timeRangesSunday: [],
         databaseState: {},
     };
 }
@@ -56,6 +56,41 @@ class App extends React.Component {
                 } else {
                     this.setState(makeInitialState());
                 }
+            },
+
+            submitProfile: () => {
+                const {
+                    practiceRaces,
+                    timezone,
+                    timeRangesMonday,
+                    timeRangesTuesday,
+                    timeRangesWednesday,
+                    timeRangesThursday,
+                    timeRangesFriday,
+                    timeRangesSaturday,
+                    timeRangesSunday,
+                } = this.state;
+
+                fetch('/practice_backend/member-practice', {
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        practiceRaces: practiceRaces,
+                        timezone: timezone,
+                        timeRangesMonday: timeRangesMonday,
+                        timeRangesTuesday: timeRangesTuesday,
+                        timeRangesWednesday: timeRangesWednesday,
+                        timeRangesThursday: timeRangesThursday,
+                        timeRangesFriday: timeRangesFriday,
+                        timeRangesSaturday: timeRangesSaturday,
+                        timeRangesSunday: timeRangesSunday,
+                    })
+                }).then(() => {
+                    window.location.reload();
+                });
             },
         }
     }

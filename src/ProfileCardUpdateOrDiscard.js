@@ -2,11 +2,17 @@ import React from 'react';
 import {Button, Intent} from '@blueprintjs/core';
 import './ProfileCard.css';
 
-function ProfileCardUpdateOrDiscard({resetState}) {
+function ProfileCardUpdateOrDiscard({submitProfile, resetState}) {
     return (
         <div className="Profile-card">
             <div className="mt-1 mb-3">
-                <Button large intent={Intent.PRIMARY} text="Update Profile" className="mx-2 px-5"/>
+                <Button
+                    large
+                    intent={Intent.PRIMARY}
+                    text="Update Profile"
+                    className="mx-2 px-5"
+                    onClick={submitProfile}
+                />
                 <Button
                     large
                     intent={Intent.DANGER}

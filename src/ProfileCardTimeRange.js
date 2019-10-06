@@ -38,7 +38,7 @@ function ProfileCardTimeRange(props) {
     return (
         <Card className="Profile-card">
             <div className="mb-4">
-                <h4 className={Classes.HEADING}>The times during the week you are available for practice:</h4>
+                <h4 className={Classes.HEADING}>The times during the week you are typically available for practice:</h4>
             </div>
             {weekDayDays.map((day) => <DayTimeRange {...props} key={day} day={day}/>)}
             <Divider className="mb-4"/>
