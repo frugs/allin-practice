@@ -60,6 +60,7 @@ class App extends React.Component {
 
             submitProfile: () => {
                 const {
+                    player,
                     practiceRaces,
                     timezone,
                     timeRangesMonday,
@@ -78,6 +79,7 @@ class App extends React.Component {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        player: player,
                         practiceRaces: practiceRaces,
                         timezone: timezone,
                         timeRangesMonday: timeRangesMonday,
