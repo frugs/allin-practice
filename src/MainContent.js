@@ -1,10 +1,11 @@
 import React from 'react';
 import {Icon, Tab, Tabs} from "@blueprintjs/core";
 import ProfilePanel from "./ProfilePanel";
+import ExplorePanel from "./ExplorePanel";
 
 function MainContent(props) {
     return (
-        <Tabs large selectedTabId="profile">
+        <Tabs large defaultSelectedTabId="profile" renderActiveTabPanelOnly>
             <span className="ml-2"/>
             <Tab
                 id="profile"
@@ -27,6 +28,7 @@ function MainContent(props) {
                 title={
                     <><Icon icon="globe-network" className="ml-2 mr-1"/><span className="ml-1 mr-2">Explore</span></>
                 }
+                panel={<ExplorePanel/>}
             />
         </Tabs>
     );

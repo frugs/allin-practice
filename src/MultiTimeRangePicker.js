@@ -7,6 +7,10 @@ const defaultTime = "1899-12-31T00:00:00.000Z";
 
 function AddButton({day, timeRanges, updateAppState}) {
     const stateKey = `timeRanges${day}`;
+    const onClick = () => {
+        let newTimeRanges = [...timeRanges, {from: defaultTime, to: defaultTime}];
+        updateAppState({[stateKey]: newTimeRanges})
+    };
     return (
         <Tooltip content="Add a time range">
             <Button
@@ -15,12 +19,7 @@ function AddButton({day, timeRanges, updateAppState}) {
                 minimal
                 className="ml-1 mr-2"
                 icon={IconNames.SMALL_PLUS}
-                onClick={
-                    () => {
-                        let newTimeRanges = [...timeRanges, {from: defaultTime, to: defaultTime}];
-                        updateAppState({[stateKey]: newTimeRanges})
-                    }
-                }
+                onClick={onClick}
             />
         </Tooltip>
     );
@@ -28,6 +27,10 @@ function AddButton({day, timeRanges, updateAppState}) {
 
 function RemoveButton({day, timeRanges, updateAppState}) {
     const stateKey = `timeRanges${day}`;
+    const onClick = () => {
+        let newTimeRanges = timeRanges.slice(0, timeRanges.length - 1);
+        updateAppState({[stateKey]: newTimeRanges})
+    };
     return (
         <Tooltip content="Remove this time range">
             <Button
@@ -36,12 +39,7 @@ function RemoveButton({day, timeRanges, updateAppState}) {
                 minimal
                 className="ml-2 mr-1"
                 icon={IconNames.SMALL_MINUS}
-                onClick={
-                    () => {
-                        let newTimeRanges = timeRanges.slice(0, timeRanges.length - 1);
-                        updateAppState({[stateKey]: newTimeRanges})
-                    }
-                }
+                onClick={onClick}
             />
         </Tooltip>
     );
