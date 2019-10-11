@@ -2,6 +2,7 @@ import React from 'react';
 import MainContent from "./MainContent";
 import LoginContent from "./LoginContent";
 import moment from "moment-timezone";
+import DefaultAvatar from './default_avatar.png';
 
 class PlaceHolderContent extends React.Component {
     componentDidMount() {
@@ -17,7 +18,7 @@ class PlaceHolderContent extends React.Component {
                 const databaseState = {
                     isSignedIn: true,
                     isAppReady: true,
-                    avatar: data.avatar,
+                    avatar: data.avatar || DefaultAvatar,
                     player: data.player,
                     league: data.league,
                     timezone: data.practice.timezone || moment.tz.guess(),

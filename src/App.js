@@ -3,6 +3,7 @@ import {FocusStyleManager} from "@blueprintjs/core";
 import AppHeader from "./AppHeader";
 import AppContent from "./AppContent";
 import './App.scss';
+import DefaultAvatar from './default_avatar.png';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -10,7 +11,7 @@ function makeInitialState() {
     return {
         isSignedIn: false,
         isAppReady: false,
-        avatar: "",
+        avatar: DefaultAvatar,
         player: "",
         continent: "",
         race: "",
