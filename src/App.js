@@ -4,6 +4,7 @@ import AppHeader from "./AppHeader";
 import AppContent from "./AppContent";
 import './App.scss';
 import DefaultAvatar from './default_avatar.png';
+import moment from "moment-timezone";
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -57,6 +58,38 @@ class App extends React.Component {
                 } else {
                     this.setState(makeInitialState());
                 }
+            },
+
+            loadProfile: () => {
+                fetch("/practice_backend/member")
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        const databaseState = {
+                            isSignedIn: true,
+                            isAppReady: true,
+                            avatar: data.avatar || DefaultAvatar,
+                            player: data.player,
+                            league: data.league,
+                            timezone: data.practice.timezone || moment.tz.guess(),
+                            practiceRaces: data.practice.practiceRaces,
+                            timeRangesMonday: data.practice.timeRangesMonday || [],
+                            timeRangesTuesday: data.practice.timeRangesTuesday || [],
+                            timeRangesWednesday: data.practice.timeRangesWednesday || [],
+                            timeRangesThursday: data.practice.timeRangesThursday || [],
+                            timeRangesFriday: data.practice.timeRangesFriday || [],
+                            timeRangesSaturday: data.practice.timeRangesSaturday || [],
+                            timeRangesSunday: data.practice.timeRangesSunday || [],
+                        };
+                        this.setState({...databaseState, databaseState: databaseState});
+                    }, (err) => {
+                        this.setState({isAppReady: true});
+                        console.log(err.message);
+                    });
             },
 
             submitProfile: () => {
