@@ -1,0 +1,5 @@
+@media (max-width: 600px) {
+    .TimeRangePicker-responsive {
+        flex-direction: column;
+    }
+}

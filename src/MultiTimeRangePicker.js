@@ -17,7 +17,7 @@ function AddButton({day, timeRanges, updateAppState}) {
                 small
                 intent={Intent.PRIMARY}
                 minimal
-                className="ml-1 mr-2"
+                className="ml-1"
                 icon={IconNames.SMALL_PLUS}
                 onClick={onClick}
             />
@@ -37,7 +37,7 @@ function RemoveButton({day, timeRanges, updateAppState}) {
                 small
                 intent={Intent.DANGER}
                 minimal
-                className="ml-2 mr-1"
+                className="mr-1"
                 icon={IconNames.SMALL_MINUS}
                 onClick={onClick}
             />
