@@ -12,12 +12,7 @@
     border: 1px solid black;
 }
 
-.AppHeader-navbar-username {
-    min-width: 150px;
-    text-align: left;
-}
-
-.AppHeader-navbar-avatar-username-popover {
+.AppHeader-navbar-avatar-player-popover {
     padding: 20px;
     min-width: 200px;
 }

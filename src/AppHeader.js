@@ -1,20 +1,33 @@
 import React from 'react';
-import {Alignment, Button, Classes, Intent, Menu, MenuItem, Navbar, Popover, Position} from '@blueprintjs/core';
+import {Alignment, Button, Classes, Intent, Navbar, Popover, Position} from '@blueprintjs/core';
 import {IconNames} from '@blueprintjs/icons';
 import './AppHeader.css';
 import AllinLogo from './allin_logo.png';
 
+const HeaderLogo = () => (
+    <img
+        src={AllinLogo}
+        width="35"
+        height="30"
+        className="mx-2 my-auto"
+        alt=""
+    />
+);
+
 const AvatarPlayer = ({className, avatar, player}) => (
-    <div className={className}>
+    <div className={`${className} d-flex`}>
         <img
             src={avatar}
             width="35"
             height="35"
-            className="mr-2 AppHeader-navbar-avatar"
+            className="AppHeader-navbar-avatar mr-2 my-auto"
             alt="Avatar"
         />
         <span
-            className={`${Classes.TEXT_LARGE} AppHeader-navbar-username`}>{player}</span>
+            className={`${Classes.TEXT_LARGE} AppHeader-navbar-player my-auto`}
+        >
+            {player}
+        </span>
     </div>
 );
 
@@ -34,7 +47,6 @@ function SignedInNavbarGroup({avatar, player, signOut}) {
     return (
         <Navbar.Group align={Alignment.RIGHT}>
             <div className="AppHeader-navbar-signed-in-large">
-                <Button minimal icon={IconNames.NOTIFICATIONS} className="mx-2 px-3 py-2"/>
                 <Popover
                     fill
                     target={
@@ -43,7 +55,7 @@ function SignedInNavbarGroup({avatar, player, signOut}) {
                         </Button>
                     }
                     content={
-                        <div className="AppHeader-navbar-avatar-username-popover">
+                        <div className="AppHeader-navbar-avatar-player-popover">
                             <SignOutButton signOut={signOut}/>
                         </div>
                     }
@@ -75,23 +87,11 @@ function AppHeader({isSignedIn, avatar, player, signOut}) {
                 <Navbar.Group align={Alignment.LEFT}
                               className="AppHeader-navbar-heading">
                     <Navbar.Heading className="AppHeader-navbar-heading-large">
-                        <img
-                            src={AllinLogo}
-                            width="35"
-                            height="30"
-                            className="mx-2"
-                            alt=""
-                        />
+                        <HeaderLogo/>
                         <span style={allinRedStyle}>All</span>-<span style={allinRedStyle}>In</span>spiration Practice
                     </Navbar.Heading>
                     <Navbar.Heading className="AppHeader-navbar-heading-small">
-                        <img
-                            src={AllinLogo}
-                            width="35"
-                            height="30"
-                            className="mr-2 my-auto"
-                            alt=""
-                        />
+                        <HeaderLogo/>
                         <span>
                             <div>
                                 <span style={allinRedStyle}>All</span>-<span style={allinRedStyle}>In</span>spiration
