@@ -12,6 +12,7 @@ function makeInitialState() {
     return {
         isSignedIn: false,
         isAppReady: false,
+        isExplorePanelReady: false,
         avatar: DefaultAvatar,
         player: "",
         continent: "",
@@ -94,6 +95,9 @@ class App extends React.Component {
             },
 
             loadMemberProfiles: () => {
+                this.setState({
+                    isExplorePanelReady: false
+                });
                 fetch("/practice_backend/members")
                     .then((response) => {
                         if (!response.ok) {
@@ -103,6 +107,7 @@ class App extends React.Component {
                     })
                     .then((data) => {
                         this.setState({
+                            isExplorePanelReady: true,
                             members: data.map((member) => ({
                                 discord_id: member.discord_id,
                                 avatar: member.practice.avatar || DefaultAvatar,

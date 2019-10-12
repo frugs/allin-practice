@@ -31,6 +31,10 @@
     max-width: 250px;
 }
 
+.Explore-spinner {
+    min-height: 500px;
+}
+
 @media (max-width: 600px) {
     .Explore-summary-container-responsive {
         flex-direction: column;
