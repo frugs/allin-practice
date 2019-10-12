@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, ButtonGroup, Card, Classes, Intent} from '@blueprintjs/core';
 import RaceIcon from "./RaceIcon";
 import './ProfileCard.css';
+import './ProfileCardRace.css';
 import './AppUtil.css'
 
 function RaceButtonContent({race}) {
@@ -41,7 +42,7 @@ function ProfileCardRace(props) {
             <div className="mb-4">
                 <h4 className={Classes.HEADING}>The race(s) you'd like to practice with:</h4>
             </div>
-            <ButtonGroup minimal fill>
+            <ButtonGroup minimal fill className="ProfileRaceCard-race-button-group-responsive">
                 {
                     races.map((race) => {
                         return (
