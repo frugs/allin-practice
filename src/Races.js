@@ -1,6 +1,7 @@
 import RaceIcon from "./RaceIcon";
 import {Classes} from "@blueprintjs/core";
 import React from "react";
+import './Races.css';
 
 const races = [
     "Terran",
@@ -23,7 +24,7 @@ const Race = ({race}) => (
 );
 
 const Races = ({practiceRaces}) => (
-    <div className="d-flex">
+    <div className="d-flex Races-responsive">
         {races.map((race) => practiceRaces.includes(race) ? <Race race={race} key={race}/> : null)}
     </div>
 );

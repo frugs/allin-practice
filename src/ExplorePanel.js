@@ -103,19 +103,22 @@ class ExplorePanel extends React.Component {
                         members.map((member, index) => (
                             <div key={index} className="Explore-card mt-3 mb-5">
                                 <div align="left"
-                                     className="d-flex align-items-center Explore-summary-container">
+                                     className="d-flex align-items-center Explore-summary-container-responsive">
                                     <img
                                         src={member.avatar}
                                         width="150"
                                         height="150"
-                                        className="Explore-avatar mx-2"
+                                        className="Explore-avatar mx-2 mb-2"
                                         alt="Avatar"
                                     />
-                                    <span className="mx-3">
-                                        <div align="left" className="d-flex flex-column align-items-start my-auto">
-                                            <h2 className={`Explore-player-name ${Classes.HEADING} mb-3`}>
-                                                {member.player}
-                                            </h2>
+                                    <span className="mx-3 py-2">
+                                        <div align="left" className="d-flex flex-column align-items-start">
+                                            <span className="Explore-player-name-responsive mb-3">
+                                                <h2 className={Classes.HEADING}>
+                                                    {member.player}
+                                                </h2>
+                                            </span>
+
                                             <League league={member.league}/>
                                             <Races practiceRaces={member.practiceRaces}/>
                                             <Timezone timezone={member.timezone}/>

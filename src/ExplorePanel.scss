@@ -16,10 +16,7 @@
 
 .Explore-card {
     max-width: 700px;
-}
-
-.Explore-player-name {
-    min-width: 400px;
+    width: 90%;
 }
 
 .Explore-avatar {
@@ -32,4 +29,15 @@
 
 .Explore-day-time-range {
     max-width: 250px;
+}
+
+@media (max-width: 600px) {
+    .Explore-summary-container-responsive {
+        flex-direction: column;
+    }
+
+    .Explore-player-name-responsive {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
