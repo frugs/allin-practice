@@ -21,3 +21,35 @@
     padding: 20px;
     min-width: 200px;
 }
+
+.AppHeader-navbar-signed-in-menu-popover {
+    min-width: 300px;
+}
+
+@media (max-width: 600px) {
+    .AppHeader-navbar-heading-large {
+        display: none;
+    }
+
+    .AppHeader-navbar-heading-small {
+        display: flex;
+    }
+
+    .AppHeader-navbar-signed-in-large {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) {
+    .AppHeader-navbar-heading-small {
+        display: none;
+    }
+
+    .AppHeader-navbar-signed-in-small {
+        display: none;
+    }
+
+    .AppHeader-navbar-signed-in-large {
+        display: flex;
+    }
+}
