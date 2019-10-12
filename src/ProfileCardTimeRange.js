@@ -16,7 +16,6 @@ function DayTimeRange(props) {
                     timeRanges={props[`timeRanges${day}`]}
                     selectAllOnFocus
                     showArrowButtons
-                    useAmPm
                 />
             </div>
         </div>

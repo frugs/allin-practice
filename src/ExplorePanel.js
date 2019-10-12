@@ -34,18 +34,17 @@ const DayTimeRanges = ({dayTimeRanges}) => {
             </div>
         );
     }
-    const timeFormat = "hh:mm A";
 
     return (
         <div>
             {dayTimeRanges.map((timeRange, index) => (
                 <div className="Explore-day-time-range d-flex justify-content-between mb-3 mx-3" key={index}>
                     <Tag intent={Intent.PRIMARY} large>
-                        <Moment format={timeFormat}>{timeRange["from"]}</Moment>
+                        <Moment format="HH:mm">{timeRange["from"]}</Moment>
                     </Tag>
                     <Icon icon={IconNames.MINUS} className="my-auto"/>
                     <Tag intent={Intent.PRIMARY} large>
-                        <Moment format={timeFormat}>{timeRange["to"]}</Moment>
+                        <Moment format="kk:mm">{timeRange["to"]}</Moment>
                     </Tag>
                 </div>
             ))}
