@@ -15,6 +15,16 @@
     top: -50px;
 }
 
+@media (max-width: 600px) {
+    .Profile-summary-container-responsive {
+        flex-direction: column;
+    }
+
+    .Profile-summary-player-name-responsive {
+        text-align: center;
+    }
+}
+
 .Profile-avatar {
     min-width: 200px;
     min-height: 200px;

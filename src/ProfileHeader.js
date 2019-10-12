@@ -14,7 +14,9 @@ function ProfileHeader({avatar, player, timezone, practiceRaces, league}) {
                 alt="Cover"
                 className="Profile-cover"
             />
-            <div align="left" className="d-flex align-items-center Profile-summary-container">
+            <div align="left"
+                 className="d-flex align-items-center Profile-summary-container Profile-summary-container-responsive"
+            >
                 <img
                     src={avatar}
                     width="200"
@@ -24,7 +26,7 @@ function ProfileHeader({avatar, player, timezone, practiceRaces, league}) {
                 />
                 <span className="mx-3 py-5">
                     <div className="d-flex flex-column align-items-start">
-                        <h2 className={`${Classes.HEADING} my-3`}>{player}</h2>
+                        <h2 className={`Profile-summary-player-name-responsive ${Classes.HEADING} my-3`}>{player}</h2>
                         <League league={league}/>
                         <Races practiceRaces={practiceRaces}/>
                         <Timezone timezone={timezone}/>
