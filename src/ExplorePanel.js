@@ -1,11 +1,12 @@
 import React from 'react';
-import {Card, Classes, Divider, Icon, Intent, Spinner, Tag} from '@blueprintjs/core';
+import {Card, Classes, Divider, Icon, Intent, Tag} from '@blueprintjs/core';
 import {IconNames} from '@blueprintjs/icons';
 import League from "./League";
 import Races from "./Races";
 import './ExplorePanel.scss'
 import Timezone from "./Timezone";
 import Moment from "react-moment";
+import DefaultSpinner from "./DefaultSpinner";
 
 const ExploreHeader = () => (
     <div className="Explore-header">
@@ -97,7 +98,7 @@ class ExplorePanel extends React.Component {
         const {isExplorePanelReady, members} = this.props;
         if (!isExplorePanelReady) {
             return (
-               <Spinner className="Explore-spinner" intent={Intent.PRIMARY}/>
+                <DefaultSpinner/>
             );
         }
 

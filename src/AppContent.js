@@ -1,6 +1,7 @@
 import React from 'react';
 import MainContent from "./MainContent";
 import LoginContent from "./LoginContent";
+import DefaultSpinner from "./DefaultSpinner";
 
 class PlaceHolderContent extends React.Component {
     componentDidMount() {
@@ -9,7 +10,9 @@ class PlaceHolderContent extends React.Component {
     }
 
     render() {
-        return "";
+        return (
+            <DefaultSpinner/>
+        );
     }
 }
 
@@ -18,7 +21,6 @@ function AppContent(props) {
     if (isAppReady) {
         return isSignedIn ? <MainContent {...props}/> : <LoginContent signIn={signIn}/>;
     } else {
-        console.log(isAppReady);
         return <PlaceHolderContent loadProfile={loadProfile}/>
     }
 }
