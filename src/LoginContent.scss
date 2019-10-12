@@ -1,7 +1,17 @@
-.LoginContent-card {
-  min-width: 500px;
-  height: 400px;
-  width: 50%;
+@media (max-width: 600px) {
+  .LoginContent-card {
+    min-width: 325px;
+    width: 90%;
+    height: 400px;
+  }
+}
+
+@media (min-width: 600px) {
+  .LoginContent-card {
+    min-width: 500px;
+    height: 400px;
+    width: 50%;
+  }
 }
 
 .LoginContent-discord-login-button {

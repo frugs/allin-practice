@@ -8,15 +8,17 @@ function LoginContent({signIn}) {
     return (
         <Card className="mx-auto my-5 LoginContent-card" elevation={Elevation.FOUR}>
             <div className="row h-100">
-                <div className="align-self-center text-center p-5 w-100">
+                <div className="align-self-center text-center w-100">
                     <img
                         src={AllinOfficial}
                         alt="All-Inspiration"
-                        width="300"
+                        width="250"
                         className="mb-5"
                         style={{"objectFit": "contain"}}
                     />
-                    <div><h2 className={Classes.HEADING}>Welcome to All-Inspiraction Practice!</h2></div>
+                    <div className="w-75 mx-auto">
+                        <h2 className={Classes.HEADING}>Welcome to All-Inspiraction Practice!</h2>
+                    </div>
                     <Button
                         large
                         className="my-3 LoginContent-discord-login-button"
