@@ -9,7 +9,7 @@ import Moment from "react-moment";
 
 const ExploreHeader = () => (
     <div className="Explore-header">
-        <div align="right" className="Explore-card d-flex justify-content-end my-3">
+        <div align="right" className="d-flex justify-content-end my-3">
             <span>
                 <h5 className={`${Classes.HEADING} my-auto mr-3`}>Show times in:</h5>
             </span>
@@ -26,7 +26,7 @@ const ExploreHeader = () => (
 );
 
 const DayTimeRanges = ({dayTimeRanges}) => {
-    if (!dayTimeRanges) {
+    if (!Array.isArray(dayTimeRanges) || !dayTimeRanges.length) {
         return (
             <div className={`${Classes.TEXT_MUTED} mb-3 mx-3`}>
                 No availability on this day.
@@ -37,8 +37,8 @@ const DayTimeRanges = ({dayTimeRanges}) => {
 
     return (
         <div>
-            {dayTimeRanges.map((timeRange) => (
-                <div className="Explore-day-time-range d-flex justify-content-between mb-3 mx-3">
+            {dayTimeRanges.map((timeRange, index) => (
+                <div className="Explore-day-time-range d-flex justify-content-between mb-3 mx-3" key={index}>
                     <Tag intent={Intent.PRIMARY} large>
                         <Moment format={timeFormat}>{timeRange["from"]}</Moment>
                     </Tag>
@@ -70,14 +70,14 @@ const WeekTimeRanges = ({weekTimeRanges}) => {
                 <h4 className={`${Classes.HEADING} mb-2`}>Availability</h4>
             </div>
             {weekDayDays.map((day) => (
-                <div>
+                <div key={day}>
                     <h5 className={`${Classes.HEADING}`}>{day}</h5>
                     <DayTimeRanges dayTimeRanges={weekTimeRanges[`timeRanges${day}`]} key={day}/>
                 </div>
             ))}
             <Divider className="mb-4"/>
             {weekEndDays.map((day) => (
-                <div>
+                <div key={day}>
                     <h5 className={`${Classes.HEADING}`}>{day}</h5>
                     <DayTimeRanges dayTimeRanges={weekTimeRanges[`timeRanges${day}`]} key={day}/>
                 </div>
@@ -87,36 +87,21 @@ const WeekTimeRanges = ({weekTimeRanges}) => {
 };
 
 class ExplorePanel extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            members: [],
-        };
-    }
 
     componentDidMount() {
-        this.setState({
-            members: [
-                {
-                    player: "Hugo \"frugs\" Wainwright",
-                    avatar: "https://cdn.discordapp.com/avatars/114041046828056579/a78d511a528f641e4a131b37d3dc33b2",
-                    practiceRaces: ["Zerg", "Protoss"],
-                    league: "Master",
-                    timezone: "Europe/London",
-                    timeRangesMonday: [{from: "1899-12-31T00:00:00.000Z", to: "1899-12-31T00:00:00.000Z"}],
-                }
-            ]
-        })
+        const {loadMemberProfiles} = this.props;
+        loadMemberProfiles();
     }
 
     render() {
+        const {members} = this.props;
         return (
             <div>
                 <ExploreHeader/>
                 <div className="Explore-body">
                     {
-                        this.state.members.map((member, index) => (
-                            <Card key={index} className="Explore-card">
+                        members.map((member, index) => (
+                            <div key={index} className="Explore-card mt-3 mb-5">
                                 <div align="left"
                                      className="d-flex align-items-center Explore-summary-container">
                                     <img
@@ -138,7 +123,7 @@ class ExplorePanel extends React.Component {
                                     </span>
                                 </div>
                                 <WeekTimeRanges weekTimeRanges={member}/>
-                            </Card>
+                            </div>
                         ))
                     }
                 </div>

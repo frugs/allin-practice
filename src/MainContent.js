@@ -28,7 +28,7 @@ function MainContent(props) {
                 title={
                     <><Icon icon="globe-network" className="ml-2 mr-1"/><span className="ml-1 mr-2">Explore</span></>
                 }
-                panel={<ExplorePanel/>}
+                panel={<ExplorePanel {...props}/>}
             />
         </Tabs>
     );

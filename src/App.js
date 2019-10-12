@@ -27,6 +27,7 @@ function makeInitialState() {
         timeRangesSaturday: [],
         timeRangesSunday: [],
         databaseState: {},
+        members: [],
     };
 }
 
@@ -88,6 +89,37 @@ class App extends React.Component {
                         this.setState({...databaseState, databaseState: databaseState});
                     }, (err) => {
                         this.setState({isAppReady: true});
+                        console.log(err.message);
+                    });
+            },
+
+            loadMemberProfiles: () => {
+                fetch("/practice_backend/members")
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        this.setState({
+                            members: data.map((member) => ({
+                                discord_id: member.discord_id,
+                                avatar: member.practice.avatar || DefaultAvatar,
+                                player: member.practice.player,
+                                league: member.league,
+                                timezone: member.practice.timezone,
+                                practiceRaces: member.practice.practiceRaces || [],
+                                timeRangesMonday: member.practice.timeRangesMonday || [],
+                                timeRangesTuesday: member.practice.timeRangesTuesday || [],
+                                timeRangesWednesday: member.practice.timeRangesWednesday || [],
+                                timeRangesThursday: member.practice.timeRangesThursday || [],
+                                timeRangesFriday: member.practice.timeRangesFriday || [],
+                                timeRangesSaturday: member.practice.timeRangesSaturday || [],
+                                timeRangesSunday: member.practice.timeRangesSunday || [],
+                            })),
+                        });
+                    }, (err) => {
                         console.log(err.message);
                     });
             },
