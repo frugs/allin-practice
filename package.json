@@ -12,11 +12,11 @@
     "http-proxy-middleware": "^0.20.0",
     "moment": "^2.29.2",
     "moment-timezone": "^0.5.26",
-    "node-sass": "^7.0.0",
+    "node-sass": "^9.0.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-moment": "^0.9.6",
-    "react-scripts": "3.1.2"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
